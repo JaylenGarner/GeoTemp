@@ -1,6 +1,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import Nav from '../components/Nav'
+import Cards from '@/components/Cards'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
       <body className={`${inter.className} bg-slate-800 text-slate-100`}>
       <Nav />
         {children}
+      <Cards/>
       </body>
     </html>
   )
