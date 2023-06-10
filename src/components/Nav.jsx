@@ -1,34 +1,37 @@
 "use client";
 import { useState } from "react";
 import { useJsApiLoader, Autocomplete } from "@react-google-maps/api";
+import getWeather from "../../lib/weather";
 
-// Declare the libraries array as a constant variable outside the component
 const libraries = ['places'];
 
 const Nav = () => {
   const [location, setLocation] = useState('');
   const [locationName, setLocationName] = useState();
-  const [latitude, setLatitude] = useState();
-  const [longitude, setLongitude] = useState();
+
+
+  const [weather, setWeather] = useState({})
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-    libraries, // Use the constant variable here
+    libraries,
   });
 
-
-  const handlePlaceChanged = () => {
-    const selectedPlace = window.autocomplete.getPlace(); // Access the autocomplete instance using the window object
+  const handlePlaceChanged = async () => {
+    const selectedPlace = window.autocomplete.getPlace();
     const selectedValue = selectedPlace.formatted_address;
 
     setLocation(selectedValue);
     setLocationName(selectedPlace.formatted_address);
-    setLatitude(selectedPlace.geometry.location.lat());
-    setLongitude(selectedPlace.geometry.location.lng());
+
+    let lat = selectedPlace.geometry.location.lat()
+    let lng = selectedPlace.geometry.location.lng()
+
+    const weatherData = await getWeather(lat, lng)
+    console.log(weatherData)
+
     setLocation('');
   };
-
-  console.log(locationName)
 
   return (
     <>
