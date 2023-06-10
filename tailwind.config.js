@@ -13,6 +13,8 @@ module.exports = {
         'snow': "url('/snow.jpg')",
         'cloudy': "url('/cloudy.jpg')",
         'windy': "url('/windy.jpg')",
+        'view': "url('/view.jpg')",
+
       },
     },
   },
