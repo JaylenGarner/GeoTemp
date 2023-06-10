@@ -1,5 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import Provider from '@/components/Provider'
 import Nav from '../components/Nav'
 import Cards from '@/components/Cards'
 
@@ -13,11 +14,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <Provider>
       <body className={`${inter.className} bg-slate-800 text-slate-100 flex flex-col h-screen`}>
       <Nav />
         {children}
       {/* <Cards/> */}
       </body>
+    </Provider>
     </html>
   )
 }
