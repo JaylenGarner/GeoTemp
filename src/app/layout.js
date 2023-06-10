@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
       <body className={`${inter.className} bg-slate-800 text-slate-100`}>
       <Nav />
         {children}
-      <Cards/>
+      {/* <Cards/> */}
       </body>
     </html>
   )
