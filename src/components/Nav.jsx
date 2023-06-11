@@ -49,6 +49,15 @@ const Nav = () => {
         />
         </div>
 
+        <div className="flex">
+          <a href="https://www.linkedin.com/in/jaylen-garner-00a252205/">
+          <img src='/socials/linkedin.png' className="w-10 h-10 mr-3  hover:brightness-50 "></img>
+          </a>
+          <a href="https://github.com/JaylenGarner/GeoTemp">
+          <img src='/socials/github.png' className="w-10 h-10  hover:brightness-50 transition duration-150"></img>
+          </a>
+        </div>
+
         {isLoaded && (
           <Autocomplete onLoad={(autocomplete) => { window.autocomplete = autocomplete }} onPlaceChanged={handlePlaceChanged}>
             <input
