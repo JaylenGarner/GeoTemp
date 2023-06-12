@@ -13,7 +13,6 @@ const Home = () => {
     if (address) setBackground('bg-sunny')
   }, [address])
 
-
   return (
     <div className={`flex flex-grow flex-col align-center ${background} bg-center bg-cover p-6 text-center`}>
       {address ? <h1 className="text-center mt-14 text-5xl font-extrabold leading-[3.5rem]">{address}</h1> :

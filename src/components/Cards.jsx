@@ -28,10 +28,11 @@ const Cards = () => {
         {test.map((day) => {
 
             return (
-              <div className="border h-fit w-full flex flex-col pb-6 bg-gray-800 rounded-xl text-2xl">
+              <div key={day.day} className="border h-fit w-full flex flex-col pb-6 bg-gray-800 rounded-xl text-2xl">
                <h3 className=" pr-2 pl-2 pb-5 pt-4 font-bold ">{day.day}</h3>
               <div className="flex justify-center pb-3">
                 <Image
+                  alt="Todays weather"
                   src={getIcon(day.weather)}
                   height={60}
                   width={60}

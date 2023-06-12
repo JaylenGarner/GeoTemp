@@ -26,11 +26,10 @@ const Nav = () => {
     setLocation(selectedValue);
     setAddress(selectedPlace.formatted_address)
 
-    let lat = selectedPlace.geometry.location.lat()
-    let lng = selectedPlace.geometry.location.lng()
+    let lat = selectedPlace.geometry.location.lat().toFixed(4)
+    let lon = selectedPlace.geometry.location.lng().toFixed(4)
 
-    // API Subscription Issues
-    const weatherData = await getWeather(lat, lng)
+    const weatherData = await getWeather(lat, lon)
     console.log(weatherData)
     setLocation('');
   };
