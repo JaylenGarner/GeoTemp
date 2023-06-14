@@ -1,9 +1,32 @@
 "use client";
 
+import { useRecoilState } from 'recoil';
+import { addressState } from "../../atoms/addressAtom";
+import { weatherState } from "../../atoms/weatherAtom";
 import Image from "next/image";
 import Search from "./Search";
+import geolocation from "../../lib/geolocation";
+import getWeather from '../../lib/weather';
+import reverseGeolocation from '../../lib/reverseGeolocation';
+
 
 const Nav = () => {
+  const [address, setAddress] = useRecoilState(addressState)
+  const [weather, setWeather] = useRecoilState(weatherState)
+
+  const handleMyWeather = async () => {
+    try {
+      const myLocation = await geolocation();
+      console.log(myLocation);
+      const weather = await getWeather(myLocation[0], myLocation[1]);
+      const geolocate = await reverseGeolocation(myLocation[0], myLocation[1])
+      setWeather(weather)
+      setAddress(`${geolocate[0].name}, ${geolocate[0].state}, ${geolocate[0].country}`)
+      console.log(geolocate)
+    } catch (error) {
+      console.error("Error retrieving weather information:", error);
+    }
+  };
 
   return <>
     <header className='flex justify-between border-b p-4 align-middle'>
@@ -25,7 +48,16 @@ const Nav = () => {
           <img src='/socials/github.png' className="w-10 h-10  hover:brightness-50 transition duration-150"></img>
         </a>
       </div>
+
+      <div className="flex">
+      <button
+        onClick={() => handleMyWeather()}
+        className="pr-4"
+      >
+        where am i
+      </button>
       <Search />
+      </div>
     </header>
   </>
 };
