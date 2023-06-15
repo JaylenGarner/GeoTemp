@@ -10,24 +10,26 @@ import geolocation from "../../lib/geolocation";
 import getWeather from '../../lib/weather';
 import reverseGeolocation from '../../lib/reverseGeolocation';
 
+import ClipLoader from "react-spinners/ClipLoader";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { faLocationDot as faLocationDotHover } from '@fortawesome/free-solid-svg-icons';
 
 const Nav = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const [address, setAddress] = useRecoilState(addressState);
   const [weather, setWeather] = useRecoilState(weatherState);
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMyWeather = async () => {
     try {
+      setIsLoading(true)
       const myLocation = await geolocation();
-      console.log(myLocation);
       const weather = await getWeather(myLocation[0], myLocation[1]);
       const geolocate = await reverseGeolocation(myLocation[0], myLocation[1]);
       setWeather(weather);
       setAddress(`${geolocate[0].name}, ${geolocate[0].state}, ${geolocate[0].country}`);
-      console.log(geolocate);
+      setIsLoading(false)
     } catch (error) {
       console.error("Error retrieving weather information:", error);
     }
@@ -64,18 +66,25 @@ const Nav = () => {
         </div>
 
         <div className="flex">
-          <button
-            onClick={() => handleMyWeather()}
-            className="pr-4"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-           {isHovered ? (
-             <FontAwesomeIcon icon={faLocationDotHover} size="xl" fade/>
-           ) : (
-             <FontAwesomeIcon icon={faLocationDot} size="xl" />
-           )}
-         </button>
+        <button
+          onClick={() => handleMyWeather()}
+          className="pr-4"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          {isLoading ? (
+            <ClipLoader
+            color={'#ffffff'}
+            loading={isLoading}
+            size={20}
+            className='mt-1'
+          />
+          ) : isHovered ? (
+            <FontAwesomeIcon icon={faLocationDotHover} size="xl" fade/>
+          ) : (
+            <FontAwesomeIcon icon={faLocationDot} size="xl" />
+          )}
+        </button>
          <Search />
         </div>
       </header>
