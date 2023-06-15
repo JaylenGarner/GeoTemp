@@ -12,10 +12,7 @@ const Home = () => {
   const [background, setBackground] = useState(null)
 
   useEffect(() => {
-    console.log(weather)
   }, [address, weather])
-
-  console.log(weather?.current.weather[0].main.toLowerCase())
 
   return (
     <div
@@ -31,7 +28,7 @@ const Home = () => {
         <h2 className="mt-6 text-5xl font-semibold">{weather.current.temp.toFixed(0)} °F</h2>
         <h2 className="mt-6 text-5xl font-semibold leading-[3.5rem]">Humidity: {weather.current.humidity}%</h2>
         <h2 className="mt-6 text-5xl font-semibold leading-[3.5rem]">Wind: {weather.current.wind_speed} mph</h2>
-        {/* <Cards /> */}
+        <Cards />
       </>
       )}
     </div>
