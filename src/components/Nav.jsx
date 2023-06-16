@@ -13,25 +13,29 @@ import reverseGeolocation from '../../lib/reverseGeolocation';
 import ClipLoader from "react-spinners/ClipLoader";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import { faLocationDot as faLocationDotHover } from '@fortawesome/free-solid-svg-icons';
+
 
 const Nav = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [address, setAddress] = useRecoilState(addressState);
   const [weather, setWeather] = useRecoilState(weatherState);
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMyWeather = async () => {
     try {
-      setIsLoading(true)
+      setIsError(false);
+      setIsLoading(true);
       const myLocation = await geolocation();
       const weather = await getWeather(myLocation[0], myLocation[1]);
       const geolocate = await reverseGeolocation(myLocation[0], myLocation[1]);
       setWeather(weather);
       setAddress(`${geolocate[0].name}, ${geolocate[0].state}, ${geolocate[0].country}`);
-      setIsLoading(false)
     } catch (error) {
       console.error("Error retrieving weather information:", error);
+      setIsError(true);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -80,9 +84,9 @@ const Nav = () => {
             className='mt-1'
           />
           ) : isHovered ? (
-            <FontAwesomeIcon icon={faLocationDotHover} size="xl" fade/>
+            <FontAwesomeIcon icon={faLocationDot} color={isError ? '#ff0000' : '#FFFFFF'} size="xl" fade/>
           ) : (
-            <FontAwesomeIcon icon={faLocationDot} size="xl" />
+            <FontAwesomeIcon icon={faLocationDot} color={isError ? '#ff0000' : '#FFFFFF'} size="xl" />
           )}
         </button>
          <Search />

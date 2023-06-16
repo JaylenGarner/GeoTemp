@@ -6,7 +6,6 @@ const Cards = () => {
   const weather = useRecoilValue(weatherState)
 
   return <>
-  {/* Desktop Navigation */}
     <div className="grid grid-rows-1 auto-cols-fr grid-flow-col gap-4 w-full bottom-0 text-center pt-6 max-lg:grid-rows-5 place-items-center max-lg:mt-6">
         {weather.daily.slice(1, 6).map((day) => {
             return (
@@ -20,8 +19,6 @@ const Cards = () => {
             </div>
         )})}
     </div>
-
-    {/* Mobile Navigation */}
   </>
 }
 
