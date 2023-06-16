@@ -46,8 +46,8 @@ const Home = () => {
         {!address && (
           <>
             {/* Mobile Heading */}
-            <div className="flex flex-col items-center">
-              <h1 className="text-6xl font-bold leading-[4.5rem] md:hidden mb-10">
+            <div className="flex flex-col items-center md:hidden">
+              <h1 className="text-6xl font-bold leading-[4.5rem] mb-10">
                 GeoTemp
               </h1>
               <img src="/logo.png" className="h-28 w-28"></img>
