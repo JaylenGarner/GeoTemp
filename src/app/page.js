@@ -5,9 +5,8 @@ import { addressState } from "../../atoms/addressAtom";
 import { weatherState } from "../../atoms/weatherAtom";
 import { useEffect, useState } from "react";
 import Cards from "@/components/Cards";
-import Search from "@/components/Search";
 
-import SkewLoader from "react-spinners/SkewLoader";
+import BarLoader from "react-spinners/BarLoader";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -30,7 +29,7 @@ const Home = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center flex-grow">
-        <SkewLoader color={"#ffffff"} loading={loading} size={50} />
+        <BarLoader color={"#ffffff"} loading={loading} size={50} />
       </div>
     );
   }
@@ -46,9 +45,19 @@ const Home = () => {
       <div>
         {!address && (
           <>
-            <h1 className="text-6xl font-bold leading-[4.5rem]">
+            {/* Mobile Heading */}
+            <div className="flex flex-col items-center">
+              <h1 className="text-6xl font-bold leading-[4.5rem] md:hidden mb-10">
+                GeoTemp
+              </h1>
+              <img src="/logo.png" className="h-28 w-28"></img>
+            </div>
+
+            {/* Desktop and Tablet Heading */}
+            <h1 className="text-6xl font-bold leading-[4.5rem] max-md:hidden">
               Explore the World's Weather with Ease
             </h1>
+
             <h2 className="text-5xl font-bold leading-[3.5rem] mt-10 text-white mb-20">
               Search for a location to get started
             </h2>
