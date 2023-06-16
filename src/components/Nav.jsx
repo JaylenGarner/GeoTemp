@@ -13,13 +13,17 @@ import reverseGeolocation from '../../lib/reverseGeolocation';
 import ClipLoader from "react-spinners/ClipLoader";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import { faLocationDot as faLocationDotHover } from '@fortawesome/free-solid-svg-icons';
 
 const Nav = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false)
   const [address, setAddress] = useRecoilState(addressState);
   const [weather, setWeather] = useRecoilState(weatherState);
+
+  const handleReset = () => {
+    setAddress(null)
+    setWeather(null)
+  }
 
   const handleMyWeather = async () => {
     try {
@@ -42,7 +46,7 @@ const Nav = () => {
   return (
     <>
       <header className='flex justify-between border-b p-4 align-middle'>
-        <div className="flex">
+        <div className="flex hover:cursor-pointer" onClick={() => handleReset()}>
           <h1 className="text-3xl font-bold pr-2 max-sm:hidden">GeoTemp</h1>
           <Image
             src='/logo.png'
