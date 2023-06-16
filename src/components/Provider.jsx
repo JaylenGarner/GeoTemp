@@ -3,7 +3,7 @@
 import { RecoilRoot } from "recoil";
 
 const Provider = ({ children }) => {
-  return <RecoilRoot>{children}</RecoilRoot>
+  return <RecoilRoot>{children}</RecoilRoot>;
 };
 
 export default Provider;
