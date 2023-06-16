@@ -13,39 +13,30 @@ import reverseGeolocation from '../../lib/reverseGeolocation';
 import ClipLoader from "react-spinners/ClipLoader";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
-
+import { faLocationDot as faLocationDotHover } from '@fortawesome/free-solid-svg-icons';
 
 const Nav = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState(false)
   const [address, setAddress] = useRecoilState(addressState);
   const [weather, setWeather] = useRecoilState(weatherState);
-  const [isHovered, setIsHovered] = useState(false);
 
   const handleMyWeather = async () => {
     try {
-      setIsError(false);
-      setIsLoading(true);
+      setIsLoading(true)
       const myLocation = await geolocation();
       const weather = await getWeather(myLocation[0], myLocation[1]);
       const geolocate = await reverseGeolocation(myLocation[0], myLocation[1]);
       setWeather(weather);
       setAddress(`${geolocate[0].name}, ${geolocate[0].state}, ${geolocate[0].country}`);
+      setIsLoading(false)
+      setError(false)
     } catch (error) {
+      setIsLoading(false)
+      setError(true)
+      alert("Location permissions must be enabled to use the geolocation feature")
       console.error("Error retrieving weather information:", error);
-      setIsError(true);
-      alert("Location permissions must be enabled to use the geolocation feature");
-    } finally {
-      setIsLoading(false);
     }
-  };
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
   };
 
   return (
@@ -74,8 +65,6 @@ const Nav = () => {
         <button
           onClick={() => handleMyWeather()}
           className="pr-4"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
         >
           {isLoading ? (
             <ClipLoader
@@ -84,10 +73,8 @@ const Nav = () => {
             size={20}
             className='mt-1'
           />
-          ) : isHovered ? (
-            <FontAwesomeIcon icon={faLocationDot} color={isError ? '#ff0000' : '#FFFFFF'} size="xl" fade/>
           ) : (
-            <FontAwesomeIcon icon={faLocationDot} color={isError ? '#ff0000' : '#FFFFFF'} size="xl" />
+            <FontAwesomeIcon icon={faLocationDot} color={error ? '#FF0000' : '#FFFFFF'} size="xl" />
           )}
         </button>
          <Search />
