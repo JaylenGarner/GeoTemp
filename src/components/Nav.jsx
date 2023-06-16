@@ -45,7 +45,8 @@ const Nav = () => {
 
   return (
     <>
-      <header className='flex justify-between border-b p-4 align-middle'>
+      <header className='flex justify-between border-b p-4 align-middle lg:justify-around'>
+
         <div className="flex hover:cursor-pointer" onClick={() => handleReset()}>
           <h1 className="text-3xl font-bold pr-2 max-sm:hidden">GeoTemp</h1>
           <Image
@@ -83,6 +84,7 @@ const Nav = () => {
         </button>
          <Search />
         </div>
+
       </header>
     </>
   );

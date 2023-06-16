@@ -5,27 +5,36 @@ import { addressState } from "../../atoms/addressAtom";
 import { weatherState } from "../../atoms/weatherAtom";
 import { useEffect, useState } from "react";
 import Cards from "@/components/Cards";
+import Search from "@/components/Search";
 
 const Home = () => {
   const address = useRecoilValue(addressState)
   const weather = useRecoilValue(weatherState)
-  const [background, setBackground] = useState(null)
+  const [background, setBackground] = useState('url(/splash.js')
 
   useEffect(() => {
+    if (weather) {
+      setBackground(`url(/weather/${weather?.current.weather[0].main.toLowerCase()}.jpg)`)
+    } else {
+      setBackground('url(/splash.jpg')
+    }
   }, [address, weather])
 
   return (
     <div
     className={`flex flex-grow flex-col bg-cover bg-center p-6 text-center justify-between`}
-    style={{backgroundImage: `url(/weather/${weather?.current.weather[0].main.toLowerCase()}.jpg)`}}
+    style={{ backgroundImage: background}}
      >
 
-      {/* For spacing elements with flex */}
-      {address && weather && <span> </span>}
+    {/* For spacing elements with flex */}
+      <span> </span>
 
        <div>
-      {address ? <h1 className="text-center text-6xl font-extrabold leading-[4.5rem]">{address}</h1> : (
-        <h1 className="mt-8 text-6xl font-bold leading-[3.5rem]">What's the weather?</h1>
+      {address ? <h2 className="text-center text-6xl font-extrabold leading-[4.5rem]">{address}</h2> : (
+        <>
+        <h1 className="text-6xl font-bold leading-[4.5rem] ">Explore the World's Weather with Ease</h1>
+        <h2 className="text-5xl font-bold leading-[3.5rem] mt-10 text-white mb-20">Search for a location to get started</h2>
+        </>
       )}
 
       {address && weather && (
@@ -37,6 +46,9 @@ const Home = () => {
         </>
       )}
       </div>
+
+      {/* For spacing tagline with flex */}
+      {!address && !weather && <span> </span>}
 
       {address && weather && <Cards />}
     </div>

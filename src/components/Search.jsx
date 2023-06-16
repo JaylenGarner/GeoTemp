@@ -10,32 +10,36 @@ import getWeather from "../../lib/weather";
 const libraries = ['places'];
 
 const Search = () => {
-    const [location, setLocation] = useState('');
-    const [address, setAddress] = useRecoilState(addressState)
-    const [weather, setWeather] = useRecoilState(weatherState)
+  const [location, setLocation] = useState('');
+  const [address, setAddress] = useRecoilState(addressState)
+  const [weather, setWeather] = useRecoilState(weatherState)
 
-    const { isLoaded } = useJsApiLoader({
-        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-        libraries,
-    });
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    libraries,
+  });
 
-    const handlePlaceChanged = async () => {
-        const selectedPlace = window.autocomplete.getPlace();
-        const selectedValue = selectedPlace.formatted_address;
+  const handlePlaceChanged = async () => {
+    const selectedPlace = window.autocomplete.getPlace();
 
-        setLocation(selectedValue);
-        setAddress(selectedPlace.formatted_address)
+    if (selectedPlace && selectedPlace.formatted_address) {
+      const selectedValue = selectedPlace.formatted_address;
 
-        let lat = selectedPlace.geometry.location.lat().toFixed(4)
-        let lon = selectedPlace.geometry.location.lng().toFixed(4)
+      setLocation(selectedValue);
+      setAddress(selectedPlace.formatted_address)
 
-        const weatherData = await getWeather(lat, lon)
-        setWeather(weatherData)
-        setLocation('');
-      };
+      let lat = selectedPlace.geometry.location.lat().toFixed(4)
+      let lon = selectedPlace.geometry.location.lng().toFixed(4)
 
-    return <>
-    {isLoaded && (
+      const weatherData = await getWeather(lat, lon)
+      setWeather(weatherData)
+      setLocation('');
+    }
+  };
+
+  return (
+    <>
+      {isLoaded && (
         <Autocomplete onLoad={(autocomplete) => { window.autocomplete = autocomplete }} onPlaceChanged={handlePlaceChanged}>
           <input
             type="text"
@@ -48,6 +52,8 @@ const Search = () => {
         </Autocomplete>
       )}
     </>
+  );
 }
+
 
 export default Search

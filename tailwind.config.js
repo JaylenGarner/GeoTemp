@@ -7,26 +7,7 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'clear': "url('/weather/clear.jpg')",
-        'clouds': "url('/weather/clouds.jpg')",
-        'rain': "url('/weather/rain.jpg')",
-        'snow': "url('/weather/snow.jpg')",
-        'thunderstorm': "url('/weather/thunderstorm.jpg')",
-        'tornado': "url('/weather/tornado.jpg')",
-        'squall': "url('/weather/squall.jpg')",
-        'ash': "url('/weather/ash.jpg')",
-        'dust': "url('/weather/dust.jpg')",
-        'sand': "url('/weather/sand.jpg')",
-        'fog': "url('/weather/fog.jpg')",
-        'haze': "url('/weather/haze.jpg')",
-        'smoke': "url('/weather/smoke.jpg')",
-        'mist': "url('/weather/mist.jpg')",
-        'drizzle': "url('/weather/drizzle.jpg')",
 
-        // temporary
-        'view': "url('/view.jpg')",
-      },
     },
   },
   plugins: [],
