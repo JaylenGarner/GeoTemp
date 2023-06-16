@@ -34,6 +34,7 @@ const Nav = () => {
     } catch (error) {
       console.error("Error retrieving weather information:", error);
       setIsError(true);
+      alert("Location permissions must be enabled to use the geolocation feature");
     } finally {
       setIsLoading(false);
     }
