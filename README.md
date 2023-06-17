@@ -64,6 +64,9 @@ In addition to the current weather information, the GeoTemp app provides a five-
 The GeoTemp app is designed to be responsive and adapt to various mobile devices, ensuring an optimal user experience across different screen sizes. The app's responsive design ensures that users can comfortably view and interact with the app on their smartphones and tablets.
 
 
+![ezgif com-resize](https://github.com/JaylenGarner/GeoTemp/assets/93837049/7e9e37cb-a712-40ac-ac29-0ec348c8a4c1)
+
+
 <ul>
 <li><strong>Adaptive Layout</strong>: The app's layout adjusts dynamically to fit different screen sizes, optimizing the content and ensuring readability and usability on mobile devices.</li>
 
