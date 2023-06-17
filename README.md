@@ -18,6 +18,7 @@ Stay prepared with GeoTemp, your reliable weather companion. Access accurate and
 - Google Maps API
 
 ## Overview
+![ezgif com-optimize](https://github.com/JaylenGarner/GeoTemp/assets/93837049/8e01c40c-c627-4065-9d40-113278c8738b)
 
 ### Navigation Bar
 
@@ -61,6 +62,7 @@ In addition to the current weather information, the GeoTemp app provides a five-
 
 ### Mobile Responsiveness Design
 The GeoTemp app is designed to be responsive and adapt to various mobile devices, ensuring an optimal user experience across different screen sizes. The app's responsive design ensures that users can comfortably view and interact with the app on their smartphones and tablets.
+
 
 <ul>
 <li><strong>Adaptive Layout</strong>: The app's layout adjusts dynamically to fit different screen sizes, optimizing the content and ensuring readability and usability on mobile devices.</li>
