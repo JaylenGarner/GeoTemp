@@ -57,10 +57,16 @@ const Nav = () => {
 
         <div className="flex">
           <a href="https://www.linkedin.com/in/jaylen-garner-00a252205/">
-            <img src="/socials/linkedin.png" className="social_icon mr-3"></img>
+            <img
+              src="/socials/linkedin.png"
+              className="social_icon mr-3 max-xs:hidden"
+            ></img>
           </a>
           <a href="https://github.com/JaylenGarner/GeoTemp">
-            <img src="/socials/github.png" className="social_icon"></img>
+            <img
+              src="/socials/github.png"
+              className="social_icon max-xxs:hidden"
+            ></img>
           </a>
         </div>
 

@@ -63,17 +63,17 @@ const Home = () => {
 
         {address && weather && (
           <>
-            <h2 className="mt-6 weather_info">
+            <h2 className="mt-6 weather_info max-sm:mt-3">
               {weather.current.weather[0].description.charAt(0).toUpperCase() +
                 weather.current.weather[0].description.slice(1)}
             </h2>
-            <h2 className="mt-5 weather_info">
+            <h2 className="mt-5 weather_info max-sm:mt-2">
               {weather.current.temp.toFixed(0)} °F
             </h2>
-            <h2 className="mt-5 weather_info">
+            <h2 className="mt-5 weather_info max-sm:mt-2">
               Humidity: {weather.current.humidity}%
             </h2>
-            <h2 className="mt-5 weather_info">
+            <h2 className="mt-5 weather_info max-sm:mt-2">
               Wind: {weather.current.wind_speed} mph
             </h2>
           </>

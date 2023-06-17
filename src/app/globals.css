@@ -39,15 +39,15 @@
 }
 
 .splash_subheading {
-    @apply text-5xl font-bold leading-[3.5rem] mt-10 text-white mb-20
+    @apply text-5xl font-bold leading-[3.5rem] mt-10 text-white mb-20;
 }
 
 .address {
-    @apply text-center text-6xl font-extrabold leading-[4.5rem]
+    @apply text-center text-6xl font-extrabold leading-[5rem] max-sm:text-4xl;
 }
 
 .weather_info {
-    @apply text-5xl font-semibold leading-[3.5rem]
+    @apply text-5xl font-semibold leading-[3.5rem] max-sm:text-3xl;
 }
 
 /* Cards */
