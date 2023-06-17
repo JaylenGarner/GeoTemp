@@ -35,10 +35,7 @@ const Home = () => {
   }
 
   return (
-    <div
-      className={`flex flex-grow flex-col bg-cover bg-center p-6 text-center justify-between`}
-      style={{ backgroundImage: background }}
-    >
+    <div className="app_background" style={{ backgroundImage: background }}>
       {/* For spacing elements with flex */}
       <span> </span>
 
@@ -47,42 +44,36 @@ const Home = () => {
           <>
             {/* Mobile Heading */}
             <div className="flex flex-col items-center md:hidden">
-              <h1 className="text-6xl font-bold leading-[4.5rem] mb-10">
-                GeoTemp
-              </h1>
+              <h1 className="main_heading mb-10">GeoTemp</h1>
               <img src="/logo.png" className="h-28 w-28"></img>
             </div>
 
             {/* Desktop and Tablet Heading */}
-            <h1 className="text-6xl font-bold leading-[4.5rem] max-md:hidden">
+            <h1 className="main_heading max-md:hidden">
               Explore the World's Weather with Ease
             </h1>
 
-            <h2 className="text-5xl font-bold leading-[3.5rem] mt-10 text-white mb-20">
+            <h2 className="splash_subheading">
               Search for a location to get started
             </h2>
           </>
         )}
 
-        {address && weather && (
-          <h2 className="text-center text-6xl font-extrabold leading-[4.5rem]">
-            {address}
-          </h2>
-        )}
+        {address && weather && <h2 className="address">{address}</h2>}
 
         {address && weather && (
           <>
-            <h2 className="mt-6 text-5xl font-semibold leading-[3.5rem]">
+            <h2 className="mt-6 weather_info">
               {weather.current.weather[0].description.charAt(0).toUpperCase() +
                 weather.current.weather[0].description.slice(1)}
             </h2>
-            <h2 className="mt-5 text-5xl font-semibold leading-[3.5rem]">
+            <h2 className="mt-5 weather_info">
               {weather.current.temp.toFixed(0)} °F
             </h2>
-            <h2 className="mt-5 text-5xl font-semibold leading-[3.5rem]">
+            <h2 className="mt-5 weather_info">
               Humidity: {weather.current.humidity}%
             </h2>
-            <h2 className="mt-5 text-5xl font-semibold leading-[3.5rem]">
+            <h2 className="mt-5 weather_info">
               Wind: {weather.current.wind_speed} mph
             </h2>
           </>

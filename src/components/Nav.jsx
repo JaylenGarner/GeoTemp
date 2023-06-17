@@ -49,27 +49,18 @@ const Nav = () => {
 
   return (
     <>
-      <header className="flex justify-between border-b p-4 align-middle lg:justify-around">
-        <div
-          className="flex hover:cursor-pointer"
-          onClick={() => handleReset()}
-        >
-          <h1 className="text-3xl font-bold pr-2 max-sm:hidden">GeoTemp</h1>
+      <header className="nav">
+        <div className="logo_container" onClick={() => handleReset()}>
+          <h1 className="logo_text">GeoTemp</h1>
           <Image src="/logo.png" width={35} height={15} alt="Site logo" />
         </div>
 
         <div className="flex">
           <a href="https://www.linkedin.com/in/jaylen-garner-00a252205/">
-            <img
-              src="/socials/linkedin.png"
-              className="w-10 h-10 mr-3 hover:brightness-50"
-            ></img>
+            <img src="/socials/linkedin.png" className="social_icon mr-3"></img>
           </a>
           <a href="https://github.com/JaylenGarner/GeoTemp">
-            <img
-              src="/socials/github.png"
-              className="w-10 h-10 hover:brightness-50 transition duration-150"
-            ></img>
+            <img src="/socials/github.png" className="social_icon"></img>
           </a>
         </div>
 
@@ -87,6 +78,7 @@ const Nav = () => {
                 icon={faLocationDot}
                 color={error ? "#FF0000" : "#FFFFFF"}
                 size="xl"
+                className="geolocation"
               />
             )}
           </button>

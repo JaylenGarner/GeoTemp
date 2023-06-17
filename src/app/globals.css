@@ -1,3 +1,61 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Nav */
+
+.nav {
+    @apply flex justify-between border-b p-4 align-middle lg:justify-around
+}
+
+.logo_container {
+    @apply flex hover:cursor-pointer hover:brightness-50 transition duration-500
+}
+
+.logo_text {
+    @apply text-3xl font-bold pr-2 max-sm:hidden;
+}
+
+.social_icon {
+    @apply w-10 h-10 hover:brightness-50 transition duration-500
+}
+
+.geolocation {
+    @apply hover:brightness-50 transition duration-500
+}
+
+.search {
+    @apply rounded-lg bg-slate-700 text-center pl-2 pr-2 focus:outline-none h-10 flex hover:cursor-pointer
+}
+
+/* Main Content */
+
+.app_background {
+    @apply flex flex-grow flex-col bg-cover bg-center p-6 text-center justify-between;
+}
+
+.main_heading {
+    @apply text-6xl font-bold leading-[4.5rem];
+}
+
+.splash_subheading {
+    @apply text-5xl font-bold leading-[3.5rem] mt-10 text-white mb-20
+}
+
+.address {
+    @apply text-center text-6xl font-extrabold leading-[4.5rem]
+}
+
+.weather_info {
+    @apply text-5xl font-semibold leading-[3.5rem]
+}
+
+/* Cards */
+
+.cards_grid {
+    @apply grid grid-rows-1 auto-cols-fr grid-flow-col gap-4 w-full bottom-0 text-center pt-6 max-lg:grid-rows-5 place-items-center max-lg:mt-6
+}
+
+.weather_card {
+    @apply border h-fit w-full flex flex-col bg-gray-800 rounded-xl text-2xl max-lg:w-9/12
+}

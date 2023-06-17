@@ -48,7 +48,7 @@ const Search = () => {
         >
           <input
             type="text"
-            className="rounded-lg bg-slate-700 text-center pl-2 pr-2 focus:outline-none h-10"
+            className="search"
             placeholder="What's the weather?"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
