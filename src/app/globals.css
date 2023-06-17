@@ -43,7 +43,7 @@
 }
 
 .address {
-    @apply text-center text-6xl font-extrabold leading-[5rem] max-sm:text-4xl;
+    @apply text-center text-6xl font-extrabold leading-[4.5rem] max-sm:text-4xl max-sm:leading-[3rem];
 }
 
 .weather_info {
