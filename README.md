@@ -10,7 +10,7 @@ Stay prepared with GeoTemp, your reliable weather companion. Access accurate and
 - React
 - Next.js
 - Recoil
-- Tailwind.css
+- Tailwind CSS
 
 ## APIs Used
 
